@@ -1,0 +1,18 @@
+version: "3"
+services:
+  docker-sb:
+    build: ./
+    container_name: docker-sb
+    restart: always
+    privileged: true
+    environment:
+      - JENKINS_URL=http://192.168.0.29:8080/computer/sbsbsbsbs/slave-agent.jnlp
+      - JENKINS_SECRET=26a9629f0766e32ee22d04ea044fbb21a17f06e68b9ac92c36929bf66e5a6dbe
+      - JENKINS_AGENT_WORKDIR=/data/jenkins_home
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - xunce
+  
+networks:
+  xunce:
